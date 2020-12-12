@@ -53,7 +53,7 @@ for event in longpoll.listen():
             }
             for x in range(int(sec)):
                 r = requests.get(url, params=parms)
-        if '!off' in message and event.from_me:
+            if message == 'off' and event.from_me:
             url = 'https://api.vk.me/method/account.setPrivacy?'
             parms= {
                 'v': '5.109',
@@ -63,7 +63,7 @@ for event in longpoll.listen():
             }
             r = requests.get(url, params=parms)
             vk.messages.edit(peer_id=event.peer_id,message="оффлайн поставлен",message_id=event.message_id)
-        if '!on' in message and event.from_me:
+        if message == 'on' and event.from_me:
             url = 'https://api.vk.me/method/account.setPrivacy?'
             parms = {
                 'v': '5.109',
